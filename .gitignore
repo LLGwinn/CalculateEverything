@@ -1,0 +1,23 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/frontend/calc-everything/node_modules
+/frontend/calc-everything/.pnp
+/frontend/calc-everything/.pnp.js
+
+# testing
+/frontend/calc-everything/coverage
+
+# production
+/frontend/calc-everything/build
+
+# misc
+/frontend/calc-everything/.DS_Store
+/frontend/calc-everything/.env.local
+/frontend/calc-everything/.env.development.local
+/frontend/calc-everything/.env.test.local
+/frontend/calc-everything/.env.production.local
+
+/frontend/calc-everything/npm-debug.log*
+/frontend/calc-everything/yarn-debug.log*
+/frontend/calc-everything/yarn-error.log*
