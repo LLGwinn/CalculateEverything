@@ -13,10 +13,13 @@ function PlainCalc() {
     const [startOver, setStartOver] = useState(true);
 
     useEffect(() => {
-        console.log('result changed to ', result)
         if (result === null) setDisplayNum('0');
+        else if (result === 'ERROR') {
+            setDisplayNum('ERROR')
+            setTimeout(() => setResult(null), 1500);
+        }
         else {
-            setDisplayNum(result);
+            setDisplayNum(result.toString());
             if (operation !== '=') setFirstNum(result);
             else setFirstNum(null);
         }
@@ -35,19 +38,19 @@ function PlainCalc() {
     const backspace = () => {
         if (displayNum.length === 1) {
             setDisplayNum(() => '0');
+            setStartOver(true);
         }
         else if (displayNum !== '0') {
             setDisplayNum(() => displayNum.slice(0, -1));
+            setStartOver(false)
         }
     }
 
     const startOperation = (operator) => {
-        if (firstNum !== null) {
-            
+        if (firstNum !== null) { 
             doMath(operation);
             setOperation(operator);
             setFirstNum(result);
-
         }
         else  {
             setOperation(operator);
@@ -55,7 +58,6 @@ function PlainCalc() {
             setResult(parseFloat(displayNum));
         }
         setStartOver(true);
-
     }
 
     const clear = () => {
@@ -78,18 +80,21 @@ function PlainCalc() {
         }
         else if (oper === '/') {
             if (parseFloat(displayNum) === 0) {
-                setDisplayNum('ERROR');
+                setResult('ERROR');
             }
             else {
                 setResult(() => firstNum / parseFloat(displayNum));
             }
         }
+        else if (oper === null) {
+            setResult(() => parseFloat(displayNum));
+        }
     }
 
     const getResult = () => {
         doMath(operation);
-        setOperation('=');
-        setDisplayNum(result);
+        setOperation(null);
+        if (result !== null) setDisplayNum(result.toString());
         setStartOver(true);
     }
 
