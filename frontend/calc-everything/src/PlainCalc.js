@@ -99,21 +99,23 @@ function PlainCalc() {
     }
 
     return (
+        <>
+
         <div className='PlainCalc mx-auto'>
             {/* calculator */}
-            <div className='PlainCalc-calculator mt-1 mt-sm-3'>
+            <div className='PlainCalc-calculator col col-auto mx-auto mt-1 mt-sm-3'>
                 <div className="row p-2">
                     {/* display */}
                     <div className='PlainCalc-display col-12 px-3'>
                         {displayNum}
                     </div>
                 </div>
-                <div className='row align-items-center'>
+                <div className='row align-items-center justify-content-center'>
                     
                     {/* keypad */}
-                    <div className='PlainCalc-keypad col-6 ps-1'>
+                    <div className='col-6 ps-2'>
                         {/* numbers - first row */}
-                        <div className='row pb-2 pb-sm-4 '>
+                        <div className='row pb-2 pb-sm-3 '>
 
                             <div className='col-4'>
                                 <div className='PlainCalc-number btn btn-outline-info btn-lg' 
@@ -131,7 +133,7 @@ function PlainCalc() {
                         </div>
 
                         {/* numbers - second row */}
-                        <div className='row pb-2 pb-sm-4'>
+                        <div className='row pb-2 pb-sm-3'>
                             <div className='col-4'>
                                 <div className='PlainCalc-number btn btn-outline-info btn-lg'
                                     onClick={() => addNumToDisplay('4')}>4</div>
@@ -147,7 +149,7 @@ function PlainCalc() {
                         </div>
 
                         {/* numbers - third row */}
-                        <div className='row pb-2 pb-sm-4'>
+                        <div className='row pb-2 pb-sm-3'>
                             <div className='col-4'>
                                 <div className='PlainCalc-number btn btn-outline-info btn-lg'
                                     onClick={() => addNumToDisplay('1')}>1</div>
@@ -184,7 +186,7 @@ function PlainCalc() {
 
 
                     {/* operators and other keys */}
-                    <div className='col-6 ps-4'>
+                    <div className='col-6 ps-4 pe-0'>
                         {/* add-subtract */}
                         <div className='row pb-2'>
                             <div className='col-6 pe-1 text-end'>
@@ -197,7 +199,7 @@ function PlainCalc() {
                             </div>
                         </div>
                         {/* multiply-divide */}
-                        <div className='row pb-2 pb-sm-4'>
+                        <div className='row pb-2 pb-sm-4 mb-sm-2'>
                             <div className='col-6 pe-1 text-end'>
                                 <div className='PlainCalc-operator btn btn-outline-danger m-0'
                                     onClick={() => startOperation('*')}>*</div>
@@ -208,20 +210,11 @@ function PlainCalc() {
                             </div>
                         </div>
                         {/* equals */}
-                        <div className='row pb-2 pb-sm-4'>
+                        <div className='row pb-2 pb-sm-4 mb-sm-2'>
                             <div className='mx-auto'>
                                 <div className='PlainCalc-equals btn btn-outline-danger '
                                     onClick={getResult}>=</div>
                             </div>
-                        </div>
-                        {/* memory add-subtract */}
-                        <div className='row pb-2 pb-sm-3'>
-                            <div className='col-6 pe-1 text-end'>
-                                <div className='PlainCalc-memory btn btn-outline-success btn-lg'>M+</div>
-                            </div>
-                            <div className='col-6 ps-1 text-start'>
-                                <div className='PlainCalc-memory btn btn-outline-success btn-lg'>M-</div>
-                            </div>                            
                         </div>
                         {/* clear */}
                         <div className='row '>
@@ -236,6 +229,8 @@ function PlainCalc() {
             </div>
             <Link className="btn btn-secondary mt-3" to='/'>Home</Link>
         </div>
+        
+        </>
     )
 }
 

@@ -4,22 +4,18 @@
 
 .PlainCalc-calculator {
     border: solid white 2px;
-    padding: 10px 10px 20px 20px;
+    padding: 10px 20px 20px 20px;
     border-radius: 8px;
     box-shadow: 5px 8px 18px #7091e3;
+    max-width: 400px;
 }
 
 .PlainCalc-display {
     border: solid white 1px;
     margin-bottom: 10px;
-    /* font-size: 2rem; */
     padding: 5px;
     text-align: right;
 }
-
-/* .PlainCalc-keypad {
-    align-self: center;
-} */
 
 .PlainCalc-number {
     border: solid white 2px;
@@ -37,7 +33,6 @@
 
 .PlainCalc-operator {
     border: solid white 1px;
-    /* margin-bottom: 10px; */
     font-size: 1.25rem;
     min-width: 49px;
     font-weight: bolder;
@@ -45,16 +40,8 @@
 
 .PlainCalc-equals {
     border: solid white 1px;
-    /* margin-bottom: 10px; */
     font-size: 1.5rem;
     min-width: 100px;
-}
-
-.PlainCalc-memory {
-    border: solid white 1px;
-    /* margin-bottom: 10px; */
-    width: 54px;
-    font-size: smaller;
 }
 
 .PlainCalc-clear {

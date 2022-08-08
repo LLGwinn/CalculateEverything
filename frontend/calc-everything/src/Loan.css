@@ -1,0 +1,14 @@
+.Loan {
+    width: 90%;
+    margin:auto;
+    border: solid white 1px;
+}
+
+.Loan-form {
+    border: solid  red 1px;
+    padding: 10px;
+}
+
+.Loan-radio {
+    font-size: .75rem;
+}

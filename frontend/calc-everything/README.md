@@ -7,7 +7,6 @@ The app is currently in development, so please be patient as new functionality i
 Currently operational:
 > **Plain old calculator**<br>
 > Exactly what it sounds like - basic math functions.<br>
-> Still working on the 'memory' functions, but everything else should work. Please let me know if it doesn't.
 
 Coming soon:
 > **Loan calculator**<br>
