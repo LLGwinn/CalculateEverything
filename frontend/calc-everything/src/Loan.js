@@ -1,24 +1,25 @@
 import {useEffect, useState} from 'react';
-import {formatNumber, calculateLoanPmt} from './helpers';
+import {calculateLoanPmt} from './helpers';
 import './Loan.css';
 
 function Loan() {
     const [formData, setFormData] = useState(
         {principle: '0.00',
-         interest: '0.00',
+         intRate: '0.00',
          term: 0,
          timeDivs: "months"}
-    )
+    );
 
-    const [payment, setPayment] = useState("0.00");
+    const [results, setResults] = useState(
+        {pmt: '0.00',
+         intTotal: '0.00',
+         loanTotal: '0.00'}
+    );
 
+    useEffect(() => {
+        console.log('results in state', results)
+    }, [results])
 
-    // useEffect(() => {
-    //     setFormData(data => { 
-    //         console.log(parseFloat(data.principle).toFixed(2))
-    //         return {...data, [data.principle]: parseFloat(data.principle).toFixed(2)}
-    //     })
-    // }, [payment])
 
     const handleChange = evt => {
         const {name, value} = evt.target;
@@ -29,12 +30,17 @@ function Loan() {
         
     const calculate = (evt) => {
         evt.preventDefault();
-        let rawCalculation = calculateLoanPmt(formData.principle, formData.interest, formData.term);
-        setFormData(data => {
-            return {...data, [data.principle]:formatNumber(data.principle)}
-        })
-        let formattedPmt = formatNumber(rawCalculation);
-        setPayment(formattedPmt);
+        const loanCalculations = calculateLoanPmt(formData.principle, 
+            parseFloat(formData.intRate), 
+            parseFloat(formData.term));
+        setResults(
+            {
+                pmt:loanCalculations.formattedPmt,
+                intTotal: loanCalculations.intTotal,
+                loanTotal: loanCalculations.loanTotal
+            }
+        )
+
     }
 
     return (
@@ -65,8 +71,8 @@ function Loan() {
                                 <div className='col-3'>
                                     <input type="text" 
                                         className="form-control text-end" 
-                                        name="interest"
-                                        value={formData.interest} 
+                                        name="intRate"
+                                        value={formData.intRate} 
                                         onChange={handleChange}
                                     />
                                 </div>
@@ -118,18 +124,16 @@ function Loan() {
                     </div>
                     <div className='col-5'>
                         <div className='row justify-content-center py-3'>
-                            MONTHLY PAYMENT:<br/><b> $ {payment}</b>
+                            MONTHLY PAYMENT:<br/><b> $ {results.pmt}</b>
                         </div>
                         <div className='row justify-content-center pt-4 fs-6'>
-                            Total Interest:<br/> $ ----
+                            Total Interest:<br/> $ {results.intTotal}
                         </div>
                         <div className='row justify-content-center fs-6'>
-                            Total amount you will pay:<br/> $ ----
+                            Total amount you will pay:<br/> $ {results.loanTotal}
                         </div>
                     </div>
                 </div>
-
-
         </div>
     )
 }
