@@ -16,11 +16,6 @@ function Loan() {
          loanTotal: '0.00'}
     );
 
-    useEffect(() => {
-        console.log('results in state', results)
-    }, [results])
-
-
     const handleChange = evt => {
         const {name, value} = evt.target;
         setFormData(data => {
@@ -32,7 +27,8 @@ function Loan() {
         evt.preventDefault();
         const loanCalculations = calculateLoanPmt(formData.principle, 
             parseFloat(formData.intRate), 
-            parseFloat(formData.term));
+            parseFloat(formData.term),
+            formData.timeDivs);
         setResults(
             {
                 pmt:loanCalculations.formattedPmt,
@@ -46,7 +42,7 @@ function Loan() {
     return (
         <div className='Loan'>
             <div className='h3'>Simple Loan Calculator</div>
-                <div className='row'>
+                <div className='row pe-4 pb-3'>
 
                     <div className='Loan-form col-7'>
                         <form>
@@ -58,7 +54,7 @@ function Loan() {
                                     <input type="number" step=".01" min="0"
                                         className="form-control text-end" 
                                         name="principle"
-                                        value={parseFloat(formData.principle)} 
+                                        value={formData.principle} 
                                         onChange={handleChange}
                                     />
                                 </div>
@@ -76,6 +72,7 @@ function Loan() {
                                         onChange={handleChange}
                                     />
                                 </div>
+                                %
                             </div>
 
                             <div className='row mb-5'>
@@ -91,23 +88,24 @@ function Loan() {
                                     />
                                 </div>         
                                 <div className="form-check col-auto">
-                                    <input type="radio" 
-                                        className="months" 
+                                    <input type="radio"
                                         id="months"
                                         name="timeDivs"
-                                        checked={true}
-                                        value={formData.timeDivs}
-                                        onChange={handleChange} 
+                                        checked={formData.timeDivs === "months"}
+                                        value="months"
+                                        onClick={handleChange} 
+                                        onChange={handleChange}
                                     />
                                     <label className="Loan-radio form-check-label ps-2" htmlFor="months">months</label>
                                 </div>
                                 <div className="form-check col-auto ps-1">
                                     <input type="radio" 
-                                        className="years" 
                                         id="years"
                                         name="timeDivs"
-                                        value={formData.timeDivs}
-                                        onChange={handleChange} 
+                                        checked={formData.timeDivs === "years"}
+                                        value="years"
+                                        onClick={handleChange} 
+                                        onChange={handleChange}
                                     />
                                     <label className="Loan-radio form-check-label ps-2" htmlFor="years">years</label>
                                 </div>
@@ -122,7 +120,7 @@ function Loan() {
                             </div>
                         </form>
                     </div>
-                    <div className='col-5'>
+                    <div className='Loan-results col-5'>
                         <div className='row justify-content-center py-3'>
                             MONTHLY PAYMENT:<br/><b> $ {results.pmt}</b>
                         </div>

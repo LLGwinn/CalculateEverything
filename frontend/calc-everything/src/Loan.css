@@ -5,10 +5,15 @@
 }
 
 .Loan-form {
-    border: solid  red 1px;
     padding: 10px;
 }
 
 .Loan-radio {
     font-size: .75rem;
+}
+
+.Loan-results {
+    background-color: rgb(51, 123, 51);
+    padding-right: 10px;
+    box-shadow: 25px 25px 50px 0 #21242b inset, -25px -25px 50px 0 #21242b inset;
 }

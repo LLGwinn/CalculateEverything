@@ -1,8 +1,6 @@
 /** Formats a number to have two decimal places and commas for thousands */
 function formatNumber(num) {
-    console.log('num', num, typeof num)
     const numWithDecimals = parseFloat(num).toFixed(2);
-    console.log('numWithDecimals', numWithDecimals)
     const numArray = numWithDecimals.split("");
     if (isNaN(num) || num == Infinity || num < 0) return '--';
     if (numArray.length < 7) return numWithDecimals;
@@ -15,10 +13,11 @@ function formatNumber(num) {
 }
 
 /** Simple loan calculation
- *  args: principle amt, interest rate, term of loan
+ *  args: principle amt, interest rate, term of loan, payment divs (months/years)
  *  returns: pmt amount, total interest, and total loan
  */
-function calculateLoanPmt(prin, int, time) {
+function calculateLoanPmt(prin, int, time, divs) {
+    if (divs === "years") time *= 12;
     const annualRate = (parseFloat(int/100)) / 12;
     const simplified = Math.pow((1 + annualRate), time);
     const pmt = (prin * ((annualRate * simplified) / (simplified - 1)));
@@ -29,5 +28,3 @@ function calculateLoanPmt(prin, int, time) {
 }
 
 export {formatNumber, calculateLoanPmt};
-
-// INTTOTAL AND LOANTOTAL KEEP RETURNING NaN, IN FACT I THINK THEY'RE SENDING AS NaN TO THE FORMAT FUNCTION
