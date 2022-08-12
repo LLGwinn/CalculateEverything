@@ -27,4 +27,14 @@ function calculateLoanPmt(prin, int, time, divs) {
     return {formattedPmt, intTotal, loanTotal};
 }
 
-export {formatNumber, calculateLoanPmt};
+/** Simple loan form validation */
+function validateLoanInput(prin, rate, term) {
+    if (prin < .01 || rate < .001 || term < .01) {
+        alert("All input values must be positive. But you already knew that.");
+        return false;
+    }
+    return true;
+    
+}
+
+export {formatNumber, calculateLoanPmt, validateLoanInput};

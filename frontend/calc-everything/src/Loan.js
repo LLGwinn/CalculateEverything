@@ -1,5 +1,5 @@
-import {useEffect, useState} from 'react';
-import {calculateLoanPmt} from './helpers';
+import {useState} from 'react';
+import {calculateLoanPmt, validateLoanInput} from './helpers';
 import './Loan.css';
 
 function Loan() {
@@ -25,18 +25,19 @@ function Loan() {
         
     const calculate = (evt) => {
         evt.preventDefault();
-        const loanCalculations = calculateLoanPmt(formData.principle, 
-            parseFloat(formData.intRate), 
-            parseFloat(formData.term),
-            formData.timeDivs);
-        setResults(
-            {
-                pmt:loanCalculations.formattedPmt,
-                intTotal: loanCalculations.intTotal,
-                loanTotal: loanCalculations.loanTotal
-            }
-        )
-
+        if (validateLoanInput(formData.principle, formData.intRate, formData.term)) {
+            const loanCalculations = calculateLoanPmt(formData.principle, 
+                formData.intRate, 
+                formData.term,
+                formData.timeDivs);
+            setResults(
+                {
+                    pmt:loanCalculations.formattedPmt,
+                    intTotal: loanCalculations.intTotal,
+                    loanTotal: loanCalculations.loanTotal
+                }
+            )
+        }
     }
 
     return (
@@ -65,7 +66,7 @@ function Loan() {
                                     <label htmlFor="interest" className="form-label">Interest rate:</label>
                                 </div>
                                 <div className='col-3'>
-                                    <input type="text" 
+                                    <input type="number" step=".01" min="0" 
                                         className="form-control text-end" 
                                         name="intRate"
                                         value={formData.intRate} 
