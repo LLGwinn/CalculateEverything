@@ -47,13 +47,13 @@ function Loan() {
 
                     <div className='Loan-form col-7'>
                         <form>
-                            <div className='row mb-2'>
-                                <div className="col-4 text-end">
-                                    <label htmlFor="principle" className="form-label">Loan amount:</label>
+                            <div className='row mb-2 ps-sm-3'>
+                                <div className="col-sm-4 text-sm-end">
+                                    <label htmlFor="principle" className="form-label lh-sm">Loan amount:</label>
                                 </div>
-                                <div className='col-5'>
+                                <div className='col-10 col-sm-5 ps-4 ps-sm-0 justify-self-center align-self-center'>
                                     <input type="number" step=".01" min="0"
-                                        className="form-control text-end" 
+                                        className="form-control text-end pe-0" 
                                         name="principle"
                                         value={formData.principle} 
                                         onChange={handleChange}
@@ -61,13 +61,13 @@ function Loan() {
                                 </div>
                             </div>
                             
-                            <div className='row mb-2'>
-                                <div className='col-4 text-end'>
-                                    <label htmlFor="interest" className="form-label">Interest rate:</label>
+                            <div className='row mb-2 ps-sm-3'>
+                                <div className='col-sm-4 text-sm-end'>
+                                    <label htmlFor="interest" className="form-label lh-sm">Interest rate:</label>
                                 </div>
-                                <div className='col-3'>
+                                <div className='col-10 col-sm-3 ps-4 ps-sm-0 justify-self-center align-self-center'>
                                     <input type="number" step=".01" min="0" 
-                                        className="form-control text-end" 
+                                        className="form-control text-end pe-0" 
                                         name="intRate"
                                         value={formData.intRate} 
                                         onChange={handleChange}
@@ -76,19 +76,19 @@ function Loan() {
                                 %
                             </div>
 
-                            <div className='row mb-5'>
-                                <div className='col-4 text-end'>
+                            <div className='row mb-3 ps-sm-3 mb-sm-4 mb-md-5'>
+                                <div className='col-sm-4 text-sm-end'>
                                     <label htmlFor="term" className="form-label">Term:</label>
                                 </div>
-                                <div className='col-3'>
+                                <div className='col-10 col-sm-3 ps-4 ps-sm-0 justify-self-center align-self-center'>
                                     <input type="number" 
-                                        className="form-control text-center " 
+                                        className="form-control text-center pe-0" 
                                         name="term"
                                         value={formData.term} 
                                         onChange={handleChange}
                                     />
                                 </div>         
-                                <div className="form-check col-auto">
+                                <div className="form-check col-auto col-sm-6 col-md-auto ps-md-0">
                                     <input type="radio"
                                         id="months"
                                         name="timeDivs"
@@ -114,15 +114,15 @@ function Loan() {
 
                             </div>
 
-                            <div className='row mb-3 '>
+                            <div className='row mb-sm-3'>
                                 <button type="submit" 
-                                        className="btn btn-success col-auto mx-auto"
+                                        className="btn btn-success col-8 col-sm-auto ms-4 ms-sm-5 mx-md-auto py-2 px-sm-3"
                                         onClick={calculate}>Calculate Payment</button>
                             </div>
                         </form>
                     </div>
                     <div className='Loan-results col-5'>
-                        <div className='row justify-content-center py-3'>
+                        <div className='row justify-content-center mt-3 py-3 px-sm-5 px-md-0'>
                             MONTHLY PAYMENT:<br/><b> $ {results.pmt}</b>
                         </div>
                         <div className='row justify-content-center pt-4 fs-6'>
