@@ -7,7 +7,7 @@ function Options() {
         <div className='Options'>
             <div className='d-grid'>
                 <OptionButton title="Plain Old Calculator" url="/plain" />
-                <OptionButton title="Loan" url="/loan"/>
+                <OptionButton title="Simple Loan" url="/loan"/>
                 <OptionButton title="Mortgage" url="/mortgage"/>
                 <OptionButton title="Discount" url="/discount"/>   
             </div>

@@ -4,7 +4,7 @@ function OptionButton({title, url}) {
 
     return (
         <>
-            <Link className="btn btn-info m-2 col-6 mx-auto" to={url}>{title}</Link>
+            <Link className="btn btn-info m-2 col-6 col-lg-3 mx-auto" to={url}>{title}</Link>
         </>
     )
 }
